@@ -59,7 +59,7 @@ namespace Pharmalife
             this.lblAddProducts.TabIndex = 0;
             this.lblAddProducts.Text = "Seleccione una opción:";
             // 
-            // Home
+            // HomeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -67,7 +67,7 @@ namespace Pharmalife
             this.ClientSize = new System.Drawing.Size(811, 765);
             this.Controls.Add(this.btnAddProducts);
             this.Controls.Add(this.lblAddProducts);
-            this.Name = "Home";
+            this.Name = "HomeForm";
             this.Text = "Inicio";
             this.ResumeLayout(false);
             this.PerformLayout();

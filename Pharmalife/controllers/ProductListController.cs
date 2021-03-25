@@ -104,13 +104,14 @@ namespace Pharmalife
         public void fillDataGridView(DataGridView dgv)
         {
             dgv.Rows.Clear();
+            dgv.DataSource = null;
+            dgv.Refresh();
             if (inicio == null)
             {
                 return;
             }
             else
             {
-                int counter = 0;
                 Node puntero;
                 puntero = inicio;
                 dgv.Rows.Add(puntero.product.Name, puntero.product.Presentation);
@@ -119,6 +120,43 @@ namespace Pharmalife
                     puntero = puntero.siguiente;
                     dgv.Rows.Add(puntero.product.Name, puntero.product.Presentation);
                 }
+            }
+        }
+
+        public void getAllProducts(DataGridView dgv)
+        {
+            try
+            {
+                this.mySqlConnection = Connection.connectToDb();
+                this.mySqlConnection.Open();
+                MySqlCommand command = new MySqlCommand("SELECT * FROM products;", this.mySqlConnection);
+                command.Prepare();
+                if (command.IsPrepared)
+                {
+                    MySqlDataReader reader = command.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        this.inicio = null;
+                        while (reader.Read())
+                        {
+                            Product product = new Product();
+                            product.Id = reader.GetString(reader.GetOrdinal("id"));
+                            product.Name = reader.GetString(reader.GetOrdinal("name"));
+                            product.Presentation = reader.GetString(reader.GetOrdinal("presentation"));
+                            this.insertIntoEnd(product);
+                        }
+                        this.fillDataGridView(dgv);
+                        this.inicio = null;
+                    }
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("MySQLException: " + ex.Message);
+            }
+            finally
+            {
+                this.mySqlConnection.Close();
             }
         }
 

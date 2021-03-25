@@ -27,14 +27,20 @@ namespace Pharmalife.controllers
         /**
          *  Method to save product list into database
          */
-        public void save()
+        public void save(DataGridView dgv)
         {
             this.productListController.save();
+            this.productListController.getAllProducts(dgv);
         }
 
         public void fillDataGridView(DataGridView dgv)
         {
             this.productListController.fillDataGridView(dgv);
+        }
+
+        public void getAllProducts(DataGridView dgv)
+        {
+            this.productListController.getAllProducts(dgv);
         }
     }
 }
