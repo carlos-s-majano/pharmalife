@@ -102,7 +102,7 @@ namespace Pharmalife
             this.btnSaveProducts.TabIndex = 5;
             this.btnSaveProducts.Text = "   Guardar Productos";
             this.btnSaveProducts.UseVisualStyleBackColor = false;
-            this.btnSaveProducts.Click += new System.EventHandler(this.btnSaveProducts_Click);
+            this.btnSaveProducts.Click += new System.EventHandler(this.BtnSaveProducts_Click);
             // 
             // btnAddProduct
             // 
@@ -119,7 +119,7 @@ namespace Pharmalife
             this.btnAddProduct.TabIndex = 4;
             this.btnAddProduct.Text = "   Agregar Producto";
             this.btnAddProduct.UseVisualStyleBackColor = false;
-            this.btnAddProduct.Click += new System.EventHandler(this.btnAddProduct_Click);
+            this.btnAddProduct.Click += new System.EventHandler(this.BtnAddProduct_Click);
             // 
             // lblDgvTitle
             // 

@@ -10,8 +10,8 @@ namespace Pharmalife
 {
    class ProductListController
     {
-        MySqlConnection mySqlConnection = new MySqlConnection(); 
-        public Node inicio; //cabeza de la lista
+        private MySqlConnection mySqlConnection = new MySqlConnection(); 
+        private Node inicio; //cabeza de la lista
 
         //constructor por defecto
         public ProductListController()
@@ -20,11 +20,13 @@ namespace Pharmalife
         }
 
         //metodo para insertar al final de la lista
-        public void insertIntoEnd(Product productToInsert)
+        public void InsertIntoEnd(Product productToInsert)
         {
-            Node auxiliar = new Node(); //Node temporal que todavia no pertenece a la lista
-            auxiliar.product = productToInsert; //almacena en el atributo dato el valor recibido en el parámetro
-            auxiliar.siguiente = null; // hace que el apuntador señale a null
+            Node auxiliar = new Node
+            {
+                product = productToInsert, //almacena en el atributo dato el valor recibido en el parámetro
+                siguiente = null // hace que el apuntador señale a null
+            }; //Node temporal que todavia no pertenece a la lista
 
             if (inicio == null) //verifica si la lista está vacia
             {
@@ -43,7 +45,7 @@ namespace Pharmalife
             }
         }
 
-        public void save()
+        public void Save()
         {
             if (inicio == null)
             {
@@ -54,20 +56,20 @@ namespace Pharmalife
                 int counter = 0;
                 Node puntero;
                 puntero = inicio;
-                Boolean rst = this.insertIntoDb(puntero);
+                Boolean rst = this.InsertIntoDb(puntero);
                 if(rst == true){ counter++; }
                 rst = false;
                 while (puntero.siguiente != null)
                 {
                     puntero = puntero.siguiente;
-                    rst = this.insertIntoDb(puntero);
+                    rst = this.InsertIntoDb(puntero);
                     if (rst == true) { counter++; }
                 }
                 MessageBox.Show("Se insertaron [" + counter + "] productos", "ÉXITO", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
-        public Boolean insertIntoDb(Node nodeToSave)
+        public Boolean InsertIntoDb(Node nodeToSave)
         {
             try
             {
@@ -101,7 +103,7 @@ namespace Pharmalife
             return false;
         }
 
-        public void fillDataGridView(DataGridView dgv)
+        public void FillDataGridView(DataGridView dgv)
         {
             dgv.Rows.Clear();
             dgv.DataSource = null;
@@ -123,7 +125,7 @@ namespace Pharmalife
             }
         }
 
-        public void getAllProducts(DataGridView dgv)
+        public void GetAllProducts(DataGridView dgv)
         {
             try
             {
@@ -143,9 +145,9 @@ namespace Pharmalife
                             product.Id = reader.GetString(reader.GetOrdinal("id"));
                             product.Name = reader.GetString(reader.GetOrdinal("name"));
                             product.Presentation = reader.GetString(reader.GetOrdinal("presentation"));
-                            this.insertIntoEnd(product);
+                            this.InsertIntoEnd(product);
                         }
-                        this.fillDataGridView(dgv);
+                        this.FillDataGridView(dgv);
                         this.inicio = null;
                     }
                 }

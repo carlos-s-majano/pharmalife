@@ -13,7 +13,9 @@ namespace Pharmalife
 {
     public partial class ProductsForm : Form
     {
-        ProductController productController = new ProductController();
+        private readonly ProductController productController = new ProductController();
+        private readonly ProductListController productListController = new ProductListController();
+
         public ProductsForm()
         {
             InitializeComponent();
@@ -31,19 +33,19 @@ namespace Pharmalife
             column2.ReadOnly = true;
             dgvProductsList.Columns.Add(column1);
             dgvProductsList.Columns.Add(column2);
-            this.productController.getAllProducts(dgvProductsList);
+            this.productController.GetAllProducts(dgvProductsList);
         }
 
-        private void btnAddProduct_Click(object sender, EventArgs e)
+        private void BtnAddProduct_Click(object sender, EventArgs e)
         {
             lblDgvTitle.Text = "Productos por agregar:";
-            this.productController.addProductToList(txtName.Text, txtPresentation.Text);
-            this.productController.fillDataGridView(dgvProductsList);
+            this.productController.AddProductToList(txtName.Text, txtPresentation.Text);
+            this.productController.FillDataGridView(dgvProductsList);
         }
 
-        private void btnSaveProducts_Click(object sender, EventArgs e)
+        private void BtnSaveProducts_Click(object sender, EventArgs e)
         {
-            this.productController.save(dgvProductsList);
+            this.productController.Save(dgvProductsList);
             lblDgvTitle.Text = "Productos disponibles:";
         }
     }

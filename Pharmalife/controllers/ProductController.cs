@@ -10,37 +10,32 @@ namespace Pharmalife.controllers
 {
     class ProductController
     {
-        MySqlConnection mySqlConnection = new MySqlConnection();
-        ProductListController productListController = new ProductListController();
+        private readonly ProductListController productListController = new ProductListController();
 
-        /**
-         *  Method to add product to list
-         */
-        public void addProductToList(String name, String presentation)
+        public void AddProductToList(String name, String presentation)
         {
-            Product product = new Product();
-            product.Name = name;
-            product.Presentation = presentation;
-            this.productListController.insertIntoEnd(product);
+            Product product = new Product
+            {
+                Name = name,
+                Presentation = presentation
+            };
+            this.productListController.InsertIntoEnd(product);
         }
 
-        /**
-         *  Method to save product list into database
-         */
-        public void save(DataGridView dgv)
+        public void Save(DataGridView dgv)
         {
-            this.productListController.save();
-            this.productListController.getAllProducts(dgv);
+            this.productListController.Save();
+            this.productListController.GetAllProducts(dgv);
         }
 
-        public void fillDataGridView(DataGridView dgv)
+        public void FillDataGridView(DataGridView dgv)
         {
-            this.productListController.fillDataGridView(dgv);
+            this.productListController.FillDataGridView(dgv);
         }
 
-        public void getAllProducts(DataGridView dgv)
+        public void GetAllProducts(DataGridView dgv)
         {
-            this.productListController.getAllProducts(dgv);
+            this.productListController.GetAllProducts(dgv);
         }
     }
 }

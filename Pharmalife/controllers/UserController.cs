@@ -12,9 +12,6 @@ namespace Pharmalife
     {
         MySqlConnection mySqlConnection = new MySqlConnection();
 
-        /**
-         *  Method to verify if username and password are correct and exists in users table 
-         */
         public Boolean loginVerify(String username, String password)
         {
             try
@@ -31,16 +28,9 @@ namespace Pharmalife
                     if (reader.HasRows)
                     {
                         return true;
-                        /*while (reader.Read())
-                        {
-                            MessageBox.Show("Usuario: " + reader.GetString(reader.GetOrdinal("username")));
-                            MessageBox.Show("Contraseña: " + reader.GetString(reader.GetOrdinal("password")));
-                        }*/
                     }
                     else
                     {
-                        //MessageBox.Show("Credenciales incorrectas");
-                        
                         return false;
                     }
                 }
