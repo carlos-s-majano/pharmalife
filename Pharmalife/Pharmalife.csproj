@@ -51,7 +51,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Connection.cs" />
+    <Compile Include="Classes\Lot.cs" />
     <Compile Include="Classes\Provider.cs" />
+    <Compile Include="Controllers\LotController.cs" />
+    <Compile Include="Controllers\LotListController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\ProductListController.cs" />
     <Compile Include="Controllers\ProviderController.cs" />
@@ -70,6 +73,12 @@
     </Compile>
     <Compile Include="Classes\Node.cs" />
     <Compile Include="Classes\Product.cs" />
+    <Compile Include="Forms\LotsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\LotsForm.Designer.cs">
+      <DependentUpon>LotsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\ProductsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,6 +105,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\LotsForm.resx">
+      <DependentUpon>LotsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ProductsForm.resx">
       <DependentUpon>ProductsForm.cs</DependentUpon>
@@ -153,6 +165,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\pill.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\boxes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

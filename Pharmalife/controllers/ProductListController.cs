@@ -1,5 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
-using Pharmalife.classes;
+using Pharmalife.Classes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Pharmalife
+namespace Pharmalife.Controllers
 {
    class ProductListController
     {
@@ -125,13 +125,211 @@ namespace Pharmalife
             }
         }
 
+        public void Update()
+        {
+            if (inicio == null)
+            {
+                MessageBox.Show("La lista está vacía, no existen para guardar", "LISTA VACÍA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                int counter = 0;
+                Node puntero;
+                puntero = inicio;
+                Boolean rst = this.UpdateIntoDb(puntero);
+                if (rst == true) { counter++; }
+                rst = false;
+                while (puntero.siguiente != null)
+                {
+                    puntero = puntero.siguiente;
+                    rst = this.UpdateIntoDb(puntero);
+                    if (rst == true) { counter++; }
+                }
+                MessageBox.Show("Se actualizó [" + counter + "] producto", "ÉXITO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        public void Delete()
+        {
+            if (inicio == null)
+            {
+                MessageBox.Show("La lista está vacía, no existen para guardar", "LISTA VACÍA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                int counter = 0;
+                Node puntero;
+                puntero = inicio;
+                puntero.product.Status = false;
+                Boolean rst = this.DeleteIntoDb(puntero);
+                if (rst == true) { counter++; }
+                rst = false;
+                while (puntero.siguiente != null)
+                {
+                    puntero = puntero.siguiente;
+                    rst = this.DeleteIntoDb(puntero);
+                    if (rst == true) { counter++; }
+                }
+                MessageBox.Show("Se eliminó [" + counter + "] producto", "ÉXITO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        public Boolean UpdateIntoDb(Node nodeToSave)
+        {
+            try
+            {
+                this.mySqlConnection = Connection.connectToDb();
+                this.mySqlConnection.Open();
+                MySqlCommand command = new MySqlCommand("UPDATE products SET name = @name, presentation=@presentation, provider_id=@provider_id WHERE id = @id;", this.mySqlConnection);
+                command.Parameters.AddWithValue("@id", nodeToSave.product.Id);
+                command.Parameters.AddWithValue("@name", nodeToSave.product.Name);
+                command.Parameters.AddWithValue("@presentation", nodeToSave.product.Presentation);
+                command.Parameters.AddWithValue("@provider_id", nodeToSave.product.Provider.Id);
+                command.Prepare();
+                if (command.IsPrepared)
+                {
+                    if (command.ExecuteNonQuery() > 0)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("MySQLException: " + ex.Message);
+                return false;
+            }
+            finally
+            {
+                this.mySqlConnection.Close();
+            }
+            return false;
+        }
+
+        public Boolean DeleteIntoDb(Node nodeToSave)
+        {
+            try
+            {
+                this.mySqlConnection = Connection.connectToDb();
+                this.mySqlConnection.Open();
+                MySqlCommand command = new MySqlCommand("UPDATE products SET status = @status WHERE id = @id;", this.mySqlConnection);
+                command.Parameters.AddWithValue("@id", nodeToSave.product.Id);
+                command.Parameters.AddWithValue("@status", nodeToSave.product.Status);
+                command.Prepare();
+                if (command.IsPrepared)
+                {
+                    if (command.ExecuteNonQuery() > 0)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("MySQLException: " + ex.Message);
+                return false;
+            }
+            finally
+            {
+                this.mySqlConnection.Close();
+            }
+            return false;
+        }
+        
+        public Product GetProduct(String name)
+        {
+            Product product = new Product();
+            if (inicio == null)
+            {
+                return product;
+            }
+            else
+            {
+                Node puntero;
+                puntero = inicio;
+                if (puntero.product.Name == name)
+                {
+                    product.Id = puntero.product.Id;
+                    product.Name = puntero.product.Name;
+                    product.Presentation = puntero.product.Presentation;
+                    product.Provider = puntero.product.Provider;
+                    return product;
+                }
+
+                while (puntero.siguiente != null)
+                {
+                    puntero = puntero.siguiente;
+                    if (puntero.product.Name == name)
+                    {
+                        product.Id = puntero.product.Id;
+                        product.Name = puntero.product.Name;
+                        product.Presentation = puntero.product.Presentation;
+                        product.Provider = puntero.product.Provider;
+                        return product;
+                    }
+                }
+            }
+            return product;
+        }
+
+        public void GetAllProducts()
+        {
+            try
+            {
+                this.mySqlConnection = Connection.connectToDb();
+                this.mySqlConnection.Open();
+                MySqlCommand command = new MySqlCommand("SELECT p.*, pr.id AS pr_id, pr.name AS pr_name, pr.address AS pr_address, pr.phone AS pr_phone, pr.status AS pr_status FROM products AS p LEFT JOIN  providers AS pr ON pr.id = p.provider_id WHERE p.status = 1 ORDER BY p.name ASC;", this.mySqlConnection);
+                command.Prepare();
+                if (command.IsPrepared)
+                {
+                    MySqlDataReader reader = command.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            Product product = new Product();
+                            Provider provider = new Provider();
+                            provider.Id = reader.GetString(reader.GetOrdinal("pr_id"));
+                            provider.Name = reader.GetString(reader.GetOrdinal("pr_name"));
+                            provider.Address = reader.GetString(reader.GetOrdinal("pr_address"));
+                            provider.Phone = reader.GetString(reader.GetOrdinal("pr_phone"));
+                            provider.Status = reader.GetBoolean(reader.GetOrdinal("pr_status"));
+
+                            product.Id = reader.GetString(reader.GetOrdinal("id"));
+                            product.Name = reader.GetString(reader.GetOrdinal("name"));
+                            product.Presentation = reader.GetString(reader.GetOrdinal("presentation"));
+                            product.Provider = provider;
+                            product.Status = reader.GetBoolean(reader.GetOrdinal("status"));
+                            this.InsertIntoEnd(product);
+                        }
+                    }
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("MySQLException: " + ex.Message);
+            }
+            finally
+            {
+                this.mySqlConnection.Close();
+            }
+        }
+
         public void GetAllProducts(DataGridView dgv)
         {
             try
             {
                 this.mySqlConnection = Connection.connectToDb();
                 this.mySqlConnection.Open();
-                MySqlCommand command = new MySqlCommand("SELECT p.*, pr.id AS pr_id, pr.name AS pr_name, pr.address AS pr_address, pr.phone AS pr_phone FROM products AS p LEFT JOIN  providers AS pr ON pr.id = p.provider_id WHERE p.status = 1 ORDER BY p.name ASC;", this.mySqlConnection);
+                MySqlCommand command = new MySqlCommand("SELECT p.*, pr.id AS pr_id, pr.name AS pr_name, pr.address AS pr_address, pr.phone AS pr_phone, pr.status AS pr_status FROM products AS p LEFT JOIN  providers AS pr ON pr.id = p.provider_id WHERE p.status = 1 ORDER BY p.name ASC;", this.mySqlConnection);
                 command.Prepare();
                 if (command.IsPrepared)
                 {
@@ -147,14 +345,61 @@ namespace Pharmalife
                             provider.Name = reader.GetString(reader.GetOrdinal("pr_name"));
                             provider.Address = reader.GetString(reader.GetOrdinal("pr_address"));
                             provider.Phone = reader.GetString(reader.GetOrdinal("pr_phone"));
+                            provider.Status = reader.GetBoolean(reader.GetOrdinal("pr_status"));
+
                             product.Id = reader.GetString(reader.GetOrdinal("id"));
                             product.Name = reader.GetString(reader.GetOrdinal("name"));
                             product.Presentation = reader.GetString(reader.GetOrdinal("presentation"));
                             product.Provider = provider;
+                            product.Status = reader.GetBoolean(reader.GetOrdinal("status"));
                             this.InsertIntoEnd(product);
                         }
                         this.FillDataGridView(dgv);
                         this.inicio = null;
+                    }
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("MySQLException: " + ex.Message);
+            }
+            finally
+            {
+                this.mySqlConnection.Close();
+            }
+        }
+
+        public void FillComboBox(ComboBox cbo)
+        {
+            try
+            {
+                this.mySqlConnection = Connection.connectToDb();
+                this.mySqlConnection.Open();
+                MySqlCommand command = new MySqlCommand("SELECT p.*, pr.id AS pr_id, pr.name AS pr_name, pr.address AS pr_address, pr.phone AS pr_phone, pr.status AS pr_status FROM products AS p LEFT JOIN  providers AS pr ON pr.id = p.provider_id WHERE p.status = 1 ORDER BY p.name ASC;", this.mySqlConnection);
+                command.Prepare();
+                if (command.IsPrepared)
+                {
+                    MySqlDataReader reader = command.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            Product product = new Product();
+                            Provider provider = new Provider();
+                            provider.Id = reader.GetString(reader.GetOrdinal("pr_id"));
+                            provider.Name = reader.GetString(reader.GetOrdinal("pr_name"));
+                            provider.Address = reader.GetString(reader.GetOrdinal("pr_address"));
+                            provider.Phone = reader.GetString(reader.GetOrdinal("pr_phone"));
+                            provider.Status = reader.GetBoolean(reader.GetOrdinal("pr_status"));
+
+                            product.Id = reader.GetString(reader.GetOrdinal("id"));
+                            product.Name = reader.GetString(reader.GetOrdinal("name"));
+                            product.Presentation = reader.GetString(reader.GetOrdinal("presentation"));
+                            product.Provider = provider;
+                            product.Status = reader.GetBoolean(reader.GetOrdinal("status"));
+                            this.InsertIntoEnd(product);
+                            cbo.Items.Add(reader.GetString(reader.GetOrdinal("name")));
+                        }
                     }
                 }
             }

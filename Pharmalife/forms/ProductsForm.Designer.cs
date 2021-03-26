@@ -38,6 +38,7 @@ namespace Pharmalife
             this.lblDgvTitle = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.cboProviders = new System.Windows.Forms.ComboBox();
+            this.txtId = new System.Windows.Forms.TextBox();
             this.lblProducts = new System.Windows.Forms.Label();
             this.btnReturn = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
@@ -66,22 +67,22 @@ namespace Pharmalife
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Comfortaa", 8.999999F);
             this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.label1.Location = new System.Drawing.Point(12, 66);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(126, 15);
+            this.label1.Size = new System.Drawing.Size(140, 18);
             this.label1.TabIndex = 6;
             this.label1.Text = "Nombre del producto:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Comfortaa", 8.999999F);
             this.label2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.label2.Location = new System.Drawing.Point(12, 127);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(153, 15);
+            this.label2.Size = new System.Drawing.Size(170, 18);
             this.label2.TabIndex = 7;
             this.label2.Text = "Presentación del producto:";
             // 
@@ -92,26 +93,27 @@ namespace Pharmalife
             this.dgvProductsList.Name = "dgvProductsList";
             this.dgvProductsList.Size = new System.Drawing.Size(584, 239);
             this.dgvProductsList.TabIndex = 8;
+            this.dgvProductsList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductsList_CellClick);
             // 
             // lblDgvTitle
             // 
             this.lblDgvTitle.AutoSize = true;
-            this.lblDgvTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDgvTitle.Font = new System.Drawing.Font("Comfortaa", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDgvTitle.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.lblDgvTitle.Location = new System.Drawing.Point(337, 66);
             this.lblDgvTitle.Name = "lblDgvTitle";
-            this.lblDgvTitle.Size = new System.Drawing.Size(131, 15);
+            this.lblDgvTitle.Size = new System.Drawing.Size(143, 18);
             this.lblDgvTitle.TabIndex = 9;
             this.lblDgvTitle.Text = "Productos disponibles:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Comfortaa", 8.999999F);
             this.label3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.label3.Location = new System.Drawing.Point(12, 191);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(66, 15);
+            this.label3.Size = new System.Drawing.Size(71, 18);
             this.label3.TabIndex = 10;
             this.label3.Text = "Proveedor:";
             // 
@@ -123,6 +125,14 @@ namespace Pharmalife
             this.cboProviders.Name = "cboProviders";
             this.cboProviders.Size = new System.Drawing.Size(287, 32);
             this.cboProviders.TabIndex = 11;
+            // 
+            // txtId
+            // 
+            this.txtId.Location = new System.Drawing.Point(12, 43);
+            this.txtId.Name = "txtId";
+            this.txtId.Size = new System.Drawing.Size(20, 20);
+            this.txtId.TabIndex = 26;
+            this.txtId.Visible = false;
             // 
             // lblProducts
             // 
@@ -142,7 +152,7 @@ namespace Pharmalife
             this.btnReturn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(213)))), ((int)(((byte)(157)))));
             this.btnReturn.FlatAppearance.BorderSize = 0;
             this.btnReturn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReturn.Font = new System.Drawing.Font("ColorTube", 9.749999F, System.Drawing.FontStyle.Bold);
+            this.btnReturn.Font = new System.Drawing.Font("Comfortaa", 15.75F, System.Drawing.FontStyle.Bold);
             this.btnReturn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnReturn.Image = global::Pharmalife.Properties.Resources._return;
             this.btnReturn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -153,13 +163,14 @@ namespace Pharmalife
             this.btnReturn.Text = "   Regresar";
             this.btnReturn.UseVisualStyleBackColor = false;
             this.btnReturn.Visible = false;
+            this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
             // 
             // btnDelete
             // 
             this.btnDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
             this.btnDelete.FlatAppearance.BorderSize = 0;
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDelete.Font = new System.Drawing.Font("ColorTube", 9.749999F, System.Drawing.FontStyle.Bold);
+            this.btnDelete.Font = new System.Drawing.Font("Comfortaa", 15.75F, System.Drawing.FontStyle.Bold);
             this.btnDelete.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnDelete.Image = global::Pharmalife.Properties.Resources.close;
             this.btnDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -170,13 +181,14 @@ namespace Pharmalife
             this.btnDelete.Text = "   Eliminar";
             this.btnDelete.UseVisualStyleBackColor = false;
             this.btnDelete.Visible = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnEditProduct
             // 
             this.btnEditProduct.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(195)))), ((int)(((byte)(0)))));
             this.btnEditProduct.FlatAppearance.BorderSize = 0;
             this.btnEditProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEditProduct.Font = new System.Drawing.Font("ColorTube", 9.749999F, System.Drawing.FontStyle.Bold);
+            this.btnEditProduct.Font = new System.Drawing.Font("Comfortaa", 15.75F, System.Drawing.FontStyle.Bold);
             this.btnEditProduct.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnEditProduct.Image = global::Pharmalife.Properties.Resources.edit;
             this.btnEditProduct.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -187,13 +199,14 @@ namespace Pharmalife
             this.btnEditProduct.Text = "   Editar Producto";
             this.btnEditProduct.UseVisualStyleBackColor = false;
             this.btnEditProduct.Visible = false;
+            this.btnEditProduct.Click += new System.EventHandler(this.btnEditProduct_Click);
             // 
             // btnSaveProducts
             // 
             this.btnSaveProducts.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(179)))), ((int)(((byte)(219)))));
             this.btnSaveProducts.FlatAppearance.BorderSize = 0;
             this.btnSaveProducts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSaveProducts.Font = new System.Drawing.Font("ColorTube", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSaveProducts.Font = new System.Drawing.Font("Comfortaa", 15.75F, System.Drawing.FontStyle.Bold);
             this.btnSaveProducts.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnSaveProducts.Image = global::Pharmalife.Properties.Resources.floppy_disk;
             this.btnSaveProducts.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -210,7 +223,7 @@ namespace Pharmalife
             this.btnAddProduct.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(213)))), ((int)(((byte)(157)))));
             this.btnAddProduct.FlatAppearance.BorderSize = 0;
             this.btnAddProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddProduct.Font = new System.Drawing.Font("ColorTube", 9.749999F, System.Drawing.FontStyle.Bold);
+            this.btnAddProduct.Font = new System.Drawing.Font("Comfortaa", 15.75F, System.Drawing.FontStyle.Bold);
             this.btnAddProduct.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnAddProduct.Image = ((System.Drawing.Image)(resources.GetObject("btnAddProduct.Image")));
             this.btnAddProduct.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -228,6 +241,7 @@ namespace Pharmalife
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(89)))), ((int)(((byte)(118)))));
             this.ClientSize = new System.Drawing.Size(936, 427);
+            this.Controls.Add(this.txtId);
             this.Controls.Add(this.lblProducts);
             this.Controls.Add(this.btnReturn);
             this.Controls.Add(this.btnDelete);
@@ -243,7 +257,7 @@ namespace Pharmalife
             this.Controls.Add(this.txtPresentation);
             this.Controls.Add(this.txtName);
             this.Name = "ProductsForm";
-            this.Text = "Productos";
+            this.Text = "PHARMALIFE";
             this.Load += new System.EventHandler(this.ProductsForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductsList)).EndInit();
             this.ResumeLayout(false);
@@ -267,5 +281,6 @@ namespace Pharmalife
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnReturn;
         private System.Windows.Forms.Label lblProducts;
+        private System.Windows.Forms.TextBox txtId;
     }
 }

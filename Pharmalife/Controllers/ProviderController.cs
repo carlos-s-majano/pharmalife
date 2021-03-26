@@ -1,4 +1,4 @@
-﻿using Pharmalife.classes;
+﻿using Pharmalife.Classes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,11 +6,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Pharmalife.controllers
+namespace Pharmalife.Controllers
 {
     class ProviderController
     {
-        private readonly ProviderListController ProviderListController = new ProviderListController();
+        private readonly ProviderListController providerListController = new ProviderListController();
 
         public void AddProviderToList(String name, String address, String phone)
         {
@@ -20,7 +20,7 @@ namespace Pharmalife.controllers
                 Address = address,
                 Phone = phone
             };
-            this.ProviderListController.InsertIntoEnd(provider);
+            this.providerListController.InsertIntoEnd(provider);
         }
 
         public void AddProviderToList(String id, String name, String address, String phone)
@@ -32,40 +32,40 @@ namespace Pharmalife.controllers
                 Address = address,
                 Phone = phone
             };
-            this.ProviderListController.InsertIntoEnd(provider);
+            this.providerListController.InsertIntoEnd(provider);
         }
 
         public void Save(DataGridView dgv)
         {
-            this.ProviderListController.Insert();
-            this.ProviderListController.GetAllProviders(dgv);
+            this.providerListController.Insert();
+            this.providerListController.GetAllProviders(dgv);
         }
 
         public void Update(DataGridView dgv)
         {
-            this.ProviderListController.Update();
-            this.ProviderListController.GetAllProviders(dgv);
+            this.providerListController.Update();
+            this.providerListController.GetAllProviders(dgv);
         }
 
         public void Delete(DataGridView dgv)
         {
-            this.ProviderListController.Delete();
-            this.ProviderListController.GetAllProviders(dgv);
+            this.providerListController.Delete();
+            this.providerListController.GetAllProviders(dgv);
         }
 
         public void GetAllProviders(DataGridView dgv)
         {
-            this.ProviderListController.GetAllProviders(dgv);
+            this.providerListController.GetAllProviders(dgv);
         }
 
         public void FillDataGridView(DataGridView dgv)
         {
-            this.ProviderListController.FillDataGridView(dgv);
+            this.providerListController.FillDataGridView(dgv);
         }
 
         public void FillComboBox(ComboBox cbo)
         {
-            this.ProviderListController.FillComboBox(cbo);
+            this.providerListController.FillComboBox(cbo);
         }
     }
 }

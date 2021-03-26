@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Pharmalife.classes
+namespace Pharmalife.Classes
 {
     class Provider
     {

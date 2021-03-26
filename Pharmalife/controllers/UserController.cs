@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using Pharmalife.Classes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Pharmalife
+namespace Pharmalife.Controllers
 {
     class UserController
     {

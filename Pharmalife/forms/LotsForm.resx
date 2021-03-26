@@ -117,38 +117,21 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="login" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\login (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="truck" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\truck.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="pill" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\pill.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="add" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\add1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="list" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\list.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="edit" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\edit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="close" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\close.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="floppy-disk" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\floppy-disk.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="return" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\return.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="boxes" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\boxes.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btnAddLot.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
+        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAB3RJTUUH5QMZAyEEaVgt9wAAAhdJREFU
+        WEfFltsuA0EYx3uFRN0ql6R3+gQSPAXhdSQVb+AUh4fgjkTifEhI0AukDklLiVNblEjG/787u7Lsabaz
+        9Ut+yZjdme8z3Zn5EmERQrTBETgNd+Ed/JSyvQP5bBi2yWH1g8k64QR8hWHhuzMwLadRB4Ob4Siswqhw
+        dcZhs5w2HBjQATehLjZgSk7vD17MwGuO0swVzMgw7uCFFIwjuAWTcF8JPGiBOpfdi3X495tAJz+4RjEm
+        w5qgg1tN+WtffDoVSzACH7BbhjcS4D5X4uz9QfSezBqe1x5lrxJTVnCecCqHjMHh662dANsR4IonmQCP
+        V2U0JECGmADPb2U0JTDJBHixKKMpgW0mcG+2vdmrFsTKS97h3N2BnQDbv5/vV4tytC8lJsAt4cnqy4Ud
+        SNXV8qWcxZNaYAJHbyUxkFtwDeAnxxxjbABGAoE/QfmrJgofZYfLz3k7GNu/n3NMCIyfgJWMMpo+wi0m
+        8O/bkDWcMpoSGGQC/3UUV2CrdR+wgFSi+FkRfbl50Q9v0I6AeRkR/JGGLCCVyOMWpBHgFumS4U3Qweq1
+        UWRl2B/QyTKc1WvcrMEmGdYJHrAoZeEYF95FqQVeYFkeRxKcs0eG8QcvciVYveqCy94upw8HBvCbGIO+
+        l1UAHJuF7r95GDC4G05BlaqZBwPHOLdaPWCyJByCk3Ab8q7lf0jZZh+r60FonnCBJBLftHfILWAE6+0A
+        AAAASUVORK5CYII=
+</value>
   </data>
 </root>

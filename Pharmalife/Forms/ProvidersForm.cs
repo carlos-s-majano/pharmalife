@@ -1,4 +1,4 @@
-﻿using Pharmalife.controllers;
+﻿using Pharmalife.Controllers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -61,7 +61,7 @@ namespace Pharmalife.forms
 
         private void btnAddProvider_Click(object sender, EventArgs e)
         {
-            lblDgvTitle.Text = "Proveedores a registrar:";
+            lblDgvTitle.Text = "Proveedores por agregar:";
             dgvProvidersList.Columns[0].Visible = false;
             this.providerController.AddProviderToList(txtName.Text, txtAddress.Text, txtPhone.Text);
             this.providerController.FillDataGridView(dgvProvidersList);
@@ -70,7 +70,8 @@ namespace Pharmalife.forms
         private void btnSaveProviders_Click(object sender, EventArgs e)
         {
             this.providerController.Save(dgvProvidersList);
-            lblDgvTitle.Text = "Contactos de Proveedores";
+            dgvProvidersList.Columns[0].Visible = true;
+            lblDgvTitle.Text = "Proveedores disponibles:";
             this.clearData();
         }
 
@@ -102,11 +103,10 @@ namespace Pharmalife.forms
                 this.returnToAdd();
                 
             }
-
             else if (result == DialogResult.No)
             {
+                this.ResetAll();
             }
-
 
         }
 
@@ -132,19 +132,9 @@ namespace Pharmalife.forms
 
         private void returnToAdd()
         {
-            btnAddProvider.Visible = true;
-            btnEditProvider.Visible = false;
-            btnDelete.Visible = false;
-            btnSaveProviders.Visible = true;
-            btnReturn.Visible = false;
+            this.ResetAll();
             this.clearData();
         }
-
-        private void lblAddProducts_Click(object sender, EventArgs e)
-        {
-
-        }
-
 
         private void clearData()
         {
@@ -152,6 +142,16 @@ namespace Pharmalife.forms
             txtName.Clear();
             txtAddress.Clear();
             txtPhone.Clear();
+        }
+
+        private void ResetAll()
+        {
+            btnAddProvider.Visible = true;
+            btnEditProvider.Visible = false;
+            btnDelete.Visible = false;
+            btnSaveProviders.Visible = true;
+            btnReturn.Visible = false;
+            this.clearData();
         }
     }
 }

@@ -1,5 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
-using Pharmalife.classes;
+using Pharmalife.Classes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Pharmalife.controllers
+namespace Pharmalife.Controllers
 {
     class ProviderListController
     {
@@ -90,7 +90,7 @@ namespace Pharmalife.controllers
                     rst = this.UpdateIntoDb(puntero);
                     if (rst == true) { counter++; }
                 }
-                MessageBox.Show("Se actualizaron [" + counter + "] proveedores", "ÉXITO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Se actualizó [" + counter + "] proveedor", "ÉXITO", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -115,7 +115,7 @@ namespace Pharmalife.controllers
                     rst = this.DeleteIntoDb(puntero);
                     if (rst == true) { counter++; }
                 }
-                MessageBox.Show("Se actualizaron [" + counter + "] proveedores", "ÉXITO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Se eliminó [" + counter + "] proveedor", "ÉXITO", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -301,7 +301,7 @@ namespace Pharmalife.controllers
             {
                 this.mySqlConnection = Connection.connectToDb();
                 this.mySqlConnection.Open();
-                MySqlCommand command = new MySqlCommand("SELECT * FROM providers WHERE status=1;", this.mySqlConnection);
+                MySqlCommand command = new MySqlCommand("SELECT * FROM providers WHERE status = 1;", this.mySqlConnection);
                 command.Prepare();
                 if (command.IsPrepared)
                 {

@@ -1,4 +1,4 @@
-﻿using Pharmalife.controllers;
+﻿using Pharmalife.Controllers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -33,5 +33,6 @@ namespace Pharmalife
                 MessageBox.Show("Los credenciales ingresados no corresponden a un usuario registrado", "USUARIO NO ENCONTRADO", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
     }
 }

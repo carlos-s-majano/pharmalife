@@ -1,5 +1,5 @@
-﻿using Pharmalife.controllers;
-using Pharmalife.forms;
+﻿using Pharmalife.forms;
+using Pharmalife.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -29,6 +29,17 @@ namespace Pharmalife
         {
             ProvidersForm providersForm = new ProvidersForm();
             providersForm.Show();
+        }
+
+        private void btnAddLots_Click(object sender, EventArgs e)
+        {
+            LotsForm lotsForm = new LotsForm();
+            lotsForm.Show();
+        }
+
+        private void HomeForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
