@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Pharmalife.classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,7 @@ namespace Pharmalife
     class Node
     {
         public Product product;
+        public Provider provider;
         public Node siguiente;
     }
 }

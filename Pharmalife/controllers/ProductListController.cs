@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using Pharmalife.classes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,13 +14,11 @@ namespace Pharmalife
         private MySqlConnection mySqlConnection = new MySqlConnection(); 
         private Node inicio; //cabeza de la lista
 
-        //constructor por defecto
         public ProductListController()
         {
             inicio = null;
         }
 
-        //metodo para insertar al final de la lista
         public void InsertIntoEnd(Product productToInsert)
         {
             Node auxiliar = new Node
@@ -45,7 +44,7 @@ namespace Pharmalife
             }
         }
 
-        public void Save()
+        public void Insert()
         {
             if (inicio == null)
             {
@@ -75,9 +74,10 @@ namespace Pharmalife
             {
                 this.mySqlConnection = Connection.connectToDb();
                 this.mySqlConnection.Open();
-                MySqlCommand command = new MySqlCommand("INSERT INTO products(name, presentation) VALUES(@name, @presentation);", this.mySqlConnection);
+                MySqlCommand command = new MySqlCommand("INSERT INTO products(name, presentation, provider_id) VALUES(@name, @presentation, @provider_id);", this.mySqlConnection);
                 command.Parameters.AddWithValue("@name", nodeToSave.product.Name);
                 command.Parameters.AddWithValue("@presentation", nodeToSave.product.Presentation);
+                command.Parameters.AddWithValue("@provider_id", nodeToSave.product.Provider.Id);
                 command.Prepare();
                 if (command.IsPrepared)
                 {
@@ -116,11 +116,11 @@ namespace Pharmalife
             {
                 Node puntero;
                 puntero = inicio;
-                dgv.Rows.Add(puntero.product.Name, puntero.product.Presentation);
+                dgv.Rows.Add(puntero.product.Id, puntero.product.Name, puntero.product.Presentation, puntero.product.Provider.Name);
                 while (puntero.siguiente != null)
                 {
                     puntero = puntero.siguiente;
-                    dgv.Rows.Add(puntero.product.Name, puntero.product.Presentation);
+                    dgv.Rows.Add(puntero.product.Id, puntero.product.Name, puntero.product.Presentation, puntero.product.Provider.Name);
                 }
             }
         }
@@ -131,7 +131,7 @@ namespace Pharmalife
             {
                 this.mySqlConnection = Connection.connectToDb();
                 this.mySqlConnection.Open();
-                MySqlCommand command = new MySqlCommand("SELECT * FROM products;", this.mySqlConnection);
+                MySqlCommand command = new MySqlCommand("SELECT p.*, pr.id AS pr_id, pr.name AS pr_name, pr.address AS pr_address, pr.phone AS pr_phone FROM products AS p LEFT JOIN  providers AS pr ON pr.id = p.provider_id WHERE p.status = 1 ORDER BY p.name ASC;", this.mySqlConnection);
                 command.Prepare();
                 if (command.IsPrepared)
                 {
@@ -142,9 +142,15 @@ namespace Pharmalife
                         while (reader.Read())
                         {
                             Product product = new Product();
+                            Provider provider = new Provider();
+                            provider.Id = reader.GetString(reader.GetOrdinal("pr_id"));
+                            provider.Name = reader.GetString(reader.GetOrdinal("pr_name"));
+                            provider.Address = reader.GetString(reader.GetOrdinal("pr_address"));
+                            provider.Phone = reader.GetString(reader.GetOrdinal("pr_phone"));
                             product.Id = reader.GetString(reader.GetOrdinal("id"));
                             product.Name = reader.GetString(reader.GetOrdinal("name"));
                             product.Presentation = reader.GetString(reader.GetOrdinal("presentation"));
+                            product.Provider = provider;
                             this.InsertIntoEnd(product);
                         }
                         this.FillDataGridView(dgv);

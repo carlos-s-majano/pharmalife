@@ -31,6 +31,7 @@ namespace Pharmalife
         {
             this.btnAddProducts = new System.Windows.Forms.Button();
             this.lblAddProducts = new System.Windows.Forms.Label();
+            this.btnAddProviders = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnAddProducts
@@ -59,12 +60,28 @@ namespace Pharmalife
             this.lblAddProducts.TabIndex = 0;
             this.lblAddProducts.Text = "Seleccione una opción:";
             // 
+            // btnAddProviders
+            // 
+            this.btnAddProviders.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(213)))), ((int)(((byte)(157)))));
+            this.btnAddProviders.FlatAppearance.BorderSize = 0;
+            this.btnAddProviders.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddProviders.Font = new System.Drawing.Font("ColorTube", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddProviders.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnAddProviders.Location = new System.Drawing.Point(38, 199);
+            this.btnAddProviders.Name = "btnAddProviders";
+            this.btnAddProviders.Size = new System.Drawing.Size(244, 75);
+            this.btnAddProviders.TabIndex = 2;
+            this.btnAddProviders.Text = "Agregar Proveedores";
+            this.btnAddProviders.UseVisualStyleBackColor = false;
+            this.btnAddProviders.Click += new System.EventHandler(this.btnAddProviders_Click);
+            // 
             // HomeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(89)))), ((int)(((byte)(118)))));
-            this.ClientSize = new System.Drawing.Size(811, 765);
+            this.ClientSize = new System.Drawing.Size(811, 749);
+            this.Controls.Add(this.btnAddProviders);
             this.Controls.Add(this.btnAddProducts);
             this.Controls.Add(this.lblAddProducts);
             this.Name = "HomeForm";
@@ -78,5 +95,6 @@ namespace Pharmalife
 
         private System.Windows.Forms.Button btnAddProducts;
         private System.Windows.Forms.Label lblAddProducts;
+        private System.Windows.Forms.Button btnAddProviders;
     }
 }

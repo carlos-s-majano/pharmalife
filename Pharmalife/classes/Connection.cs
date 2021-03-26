@@ -13,8 +13,8 @@ public class Connection
 	{
 		const String DB_SERVER = "127.0.0.1";
 		const String DB_PORT = "3306";
-		const String DB_USER = "pharmalife_user";
-		const String DB_PASSWORD = "pharmalife_password";
+		const String DB_USER = "root";
+		const String DB_PASSWORD = "";
 		const String DB_NAME = "pharmalife_db";
 
 		String cadena = "Database  = " + DB_NAME + "; Data Source = " + DB_SERVER + "; Port = " + DB_PORT + "; User Id = " + DB_USER + "; Password = " + DB_PASSWORD;

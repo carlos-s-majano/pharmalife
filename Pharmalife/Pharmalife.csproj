@@ -50,28 +50,37 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="classes\Connection.cs" />
-    <Compile Include="controllers\ProductController.cs" />
-    <Compile Include="controllers\ProductListController.cs" />
-    <Compile Include="forms\LoginForm.cs">
+    <Compile Include="Classes\Connection.cs" />
+    <Compile Include="Classes\Provider.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\ProductListController.cs" />
+    <Compile Include="Controllers\ProviderController.cs" />
+    <Compile Include="Controllers\ProviderListController.cs" />
+    <Compile Include="Forms\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="forms\LoginForm.Designer.cs">
+    <Compile Include="Forms\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="forms\HomeForm.cs">
+    <Compile Include="Forms\HomeForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="forms\HomeForm.Designer.cs">
+    <Compile Include="Forms\HomeForm.Designer.cs">
       <DependentUpon>HomeForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="classes\Node.cs" />
-    <Compile Include="classes\Product.cs" />
-    <Compile Include="forms\ProductsForm.cs">
+    <Compile Include="Classes\Node.cs" />
+    <Compile Include="Classes\Product.cs" />
+    <Compile Include="Forms\ProductsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="forms\ProductsForm.Designer.cs">
+    <Compile Include="Forms\ProductsForm.Designer.cs">
       <DependentUpon>ProductsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ProvidersForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ProvidersForm.Designer.cs">
+      <DependentUpon>ProvidersForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -80,16 +89,19 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="classes\User.cs" />
-    <Compile Include="controllers\UserController.cs" />
-    <EmbeddedResource Include="forms\HomeForm.resx">
+    <Compile Include="Classes\User.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <EmbeddedResource Include="Forms\HomeForm.resx">
       <DependentUpon>HomeForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="forms\LoginForm.resx">
+    <EmbeddedResource Include="Forms\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="forms\ProductsForm.resx">
+    <EmbeddedResource Include="Forms\ProductsForm.resx">
       <DependentUpon>ProductsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ProvidersForm.resx">
+      <DependentUpon>ProvidersForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -126,6 +138,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\list.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\return.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\truck.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pill.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
